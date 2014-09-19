@@ -132,7 +132,7 @@ module Grabbit
 	    end
 
 		  def image_absolute_uri(image_path) 
-		    if image_path.include?('jpg') || image_path.include?('png') || image_path.include?('gif') || image_path.include?('jpeg')
+		    if image_path && (image_path.include?('jpg') || image_path.include?('png') || image_path.include?('gif') || image_path.include?('jpeg'))
 		      URI.join(@url, image_path).to_s
 	      end
 		  end 
