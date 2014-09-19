@@ -132,9 +132,12 @@ module Grabbit
 	    end
 
 		  def image_absolute_uri(image_path) 
-		    if image_path && (image_path.include?('jpg') || image_path.include?('png') || image_path.include?('gif') || image_path.include?('jpeg'))
-		      URI.join(@url, image_path).to_s
-	      end
+		    begin
+          URI.join(@url, image_path).to_s
+        rescue URI::InvalidURIError => e
+          puts "error: #{e}"  #handle error
+        end
+      
 		  end 
   end
 end
